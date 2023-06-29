@@ -10,7 +10,7 @@ int main() {
 
     // Heading
     std::string header = "\n\t\t\t*** Color Cpp Demo ***\n";
-    std::cout << color::Colored(header, color::BOLD, color::UNDERLINE) << std::endl;
+    std::cout << color::Colored(header, color::YELLOW, color::BOLD, color::UNDERLINE) << std::endl;
 
     // Foreground colors
     const std::string foreground_text = "\tColored Text";

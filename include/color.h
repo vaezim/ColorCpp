@@ -66,17 +66,21 @@ namespace color {
 
     class Colored {
     public:
-        Colored(const std::string& str, const std::string& fg_color, const std::string& bg_color="") : 
-            m_str(str), m_fgColor(fg_color), m_bgColor(bg_color) {};
-            friend std::ostream& operator<<(std::ostream& os, const Colored& obj);
+        Colored(const std::string& str, 
+                const std::string& fg_color, 
+                const std::string& bg_color="",
+                const std::string& format="") : 
+            m_str(str), m_fgColor(fg_color), m_bgColor(bg_color), m_format(format) {};
+        friend std::ostream& operator<<(std::ostream& os, const Colored& obj);
     private:
         const std::string& m_str;
         const std::string& m_fgColor;
         const std::string& m_bgColor;
+        const std::string& m_format;
     };
 
     std::ostream& operator<<(std::ostream& os, const Colored& obj) {
-        os << obj.m_fgColor << obj.m_bgColor << obj.m_str << color::DEFAULT;
+        os << obj.m_fgColor << obj.m_bgColor << obj.m_format << obj.m_str << color::DEFAULT;
         return os;
     }
 
