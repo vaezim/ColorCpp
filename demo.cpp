@@ -9,7 +9,8 @@ namespace bF = color::Background;
 int main() {
 
     // Heading
-    std::cout << color::Colored("\n\t\t*** Color Cpp Demo ***\t\t\n", color::BOLD) << std::endl;
+    std::string header = "\n\t\t\t*** Color Cpp Demo ***\n";
+    std::cout << color::Colored(header, color::BOLD, color::UNDERLINE) << std::endl;
 
     // Foreground colors
     const std::string foreground_text = "\tColored Text";
@@ -31,11 +32,14 @@ int main() {
         cF::LIGHT_CYAN,
         cF::WHITE
     };
+    std::cout << color::Colored("\tDark Foreground", color::UNDERLINE) << "\t\t" << 
+                 color::Colored("\tLight Foreground", color::UNDERLINE) << "\n" << std::endl;
     size_t fSize = (size_t)foreground_colors.size()/2;
     for (size_t i=0; i < fSize; i++) {
         std::cout << color::Colored(foreground_text, foreground_colors[i]) << "\t\t";
         std::cout << color::Colored(foreground_text, foreground_colors[i+fSize]) << std::endl;
     }
+    std::cout << std::endl;
 
     // Background colors
     const std::string background_text = "\tColored Background";
@@ -57,6 +61,8 @@ int main() {
         bF::LIGHT_CYAN,
         bF::WHITE
     };
+    std::cout << color::Colored("\tDark Background", color::UNDERLINE) << "\t\t" << 
+                 color::Colored("\tLight Background", color::UNDERLINE) << "\n" << std::endl;
     size_t bSize = (size_t)background_colors.size()/2;
     for (size_t i=0; i < bSize; i++) {
         std::cout << color::Colored(background_text, background_colors[i]) << "\t";

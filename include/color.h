@@ -9,15 +9,6 @@ namespace color {
 
     namespace Foreground {
 
-        // Common colors
-        #define RED            
-        #define GREEN
-        #define YELLOW
-        #define BLUE
-        #define MAGENTA
-        #define CYAN
-        #define GRAY
-
         // Dark colors
         const std::string BLACK             = "\x1B[30m";
         const std::string DARK_RED          = "\x1B[31m";
@@ -40,16 +31,16 @@ namespace color {
 
     }  // namespace Foreground
 
-    namespace Background {
+    // Common colors
+    const std::string& RED                  = Foreground::LIGHT_RED;
+    const std::string& GREEN                = Foreground::LIGHT_GREEN;
+    const std::string& YELLOW               = Foreground::LIGHT_YELLOW;
+    const std::string& BLUE                 = Foreground::LIGHT_BLUE;
+    const std::string& MAGENTA              = Foreground::LIGHT_MAGENTA;
+    const std::string& CYAN                 = Foreground::LIGHT_CYAN;
+    const std::string& GRAY                 = Foreground::DARK_WHITE;
 
-        // Common colors
-        #define RED            
-        #define GREEN
-        #define YELLOW
-        #define BLUE
-        #define MAGENTA
-        #define CYAN
-        #define GRAY
+    namespace Background {
 
         // Dark colors
         const std::string BLACK             = "\x1B[40m";
@@ -75,16 +66,17 @@ namespace color {
 
     class Colored {
     public:
-        Colored(const std::string& str, const std::string& color_code) : 
-            m_str(str), m_color_code(color_code) {};
+        Colored(const std::string& str, const std::string& fg_color, const std::string& bg_color="") : 
+            m_str(str), m_fgColor(fg_color), m_bgColor(bg_color) {};
             friend std::ostream& operator<<(std::ostream& os, const Colored& obj);
     private:
         const std::string& m_str;
-        const std::string& m_color_code;
+        const std::string& m_fgColor;
+        const std::string& m_bgColor;
     };
 
     std::ostream& operator<<(std::ostream& os, const Colored& obj) {
-        os << obj.m_color_code << obj.m_str << color::DEFAULT;
+        os << obj.m_fgColor << obj.m_bgColor << obj.m_str << color::DEFAULT;
         return os;
     }
 
