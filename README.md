@@ -26,7 +26,7 @@ std::cout << color::Colored("Background color", color::Background::YELLOW) << st
 You can make text **Bold** with `color::BOLD` or **Underlined** with `color::UNDERLINE`.
 
 Up to 3 arguments can be passed to `color::Colored()` indicating **Foreground color**, **Background color**, and **Bold/Underline** formats:
-- 1 arguments:
+- 1 argument:
   ```cpp
   std::cout << color::Colored("Foreground color", color::Foreground::BLUE) << std::endl;
   std::cout << color::Colored("Background color", color::Background::YELLOW) << std::endl;
